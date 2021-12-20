@@ -10,7 +10,7 @@ import net.duguying.pinyin.Pinyin;
  */
 public class PinYinUtil {
 
-    private static Pinyin pinyin = null;
+    private static volatile Pinyin pinyin = null;
 
     private static final String SEPARATOR = ",";
 
