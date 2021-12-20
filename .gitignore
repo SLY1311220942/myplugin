@@ -1,0 +1,9 @@
+/myplugin-base/target/
+/myplugin-prevent-repeat/myplugin-prevent-repeat-core/target/
+/myplugin-prevent-repeat/myplugin-prevent-repeat-starter/target/
+/myplugin-redis/myplugin-redis-core/target/
+/myplugin-redis/myplugin-redis-starter/target/
+/myplugin-tool/myplugin-tool-pinyin/target/
+/myplugin-validate/myplugin-validate-core/target/
+/myplugin-validate/myplugin-validate-starter/target/
+/.idea/
