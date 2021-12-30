@@ -122,6 +122,30 @@ public class RedisRegister implements EnvironmentAware, ImportBeanDefinitionRegi
             GenericBeanDefinition redisTemplate = new GenericBeanDefinition();
             redisTemplate.setBeanClass(RedisTemplate.class);
             redisTemplate.getPropertyValues().add("connectionFactory", lettuceConnectionFactory);
+            try {
+                String keySerializer = "com.sly.myplugin.redis.serializer.RedisKeySerializer";
+                if (StringUtils.hasText((String) map.get("keySerializer"))) {
+                    keySerializer = (String) map.get("keySerializer");
+                }
+                String valueSerializer = "org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer";
+                if (StringUtils.hasText((String) map.get("valueSerializer"))) {
+                    valueSerializer = (String) map.get("valueSerializer");
+                }
+                String hashKeySerializer = "com.sly.myplugin.redis.serializer.RedisKeySerializer";
+                if (StringUtils.hasText((String) map.get("hashKeySerializer"))) {
+                    hashKeySerializer = (String) map.get("hashKeySerializer");
+                }
+                String hashValueSerializer = "org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer";
+                if (StringUtils.hasText((String) map.get("hashValueSerializer"))) {
+                    hashValueSerializer = (String) map.get("hashValueSerializer");
+                }
+                redisTemplate.getPropertyValues().add("keySerializer", Class.forName(keySerializer).newInstance());
+                redisTemplate.getPropertyValues().add("valueSerializer", Class.forName(valueSerializer).newInstance());
+                redisTemplate.getPropertyValues().add("hashKeySerializer", Class.forName(hashKeySerializer).newInstance());
+                redisTemplate.getPropertyValues().add("hashValueSerializer", Class.forName(hashValueSerializer).newInstance());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             redisTemplate.setAutowireMode(AutowireCapableBeanFactory.AUTOWIRE_BY_NAME);
             redisTemplate.setPrimary(onPrimary);
             beanDefinitionRegistry.registerBeanDefinition(key + "RedisTemplate", redisTemplate);
