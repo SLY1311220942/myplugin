@@ -12,6 +12,7 @@
     <artifactId>myplugin-tool-pinyin</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>net.duguying.pinyin</groupId>
             <artifactId>pinyin</artifactId>
@@ -21,6 +22,7 @@
             <groupId>com.sly</groupId>
             <artifactId>myplugin-base</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

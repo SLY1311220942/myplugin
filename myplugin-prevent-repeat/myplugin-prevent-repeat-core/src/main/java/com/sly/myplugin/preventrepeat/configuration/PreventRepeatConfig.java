@@ -30,8 +30,7 @@ public class PreventRepeatConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LOGGER.info("=====初始化反重复提交拦截器=====");
-        // PreventRepeatInterceptor preventRepeatInterceptor = new PreventRepeatInterceptor();
-        registry.addInterceptor(preventRepeatInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(preventRepeatInterceptor).addPathPatterns("/**").order(100000);
         LOGGER.info("=====反重复提交拦截器初始化完成=====");
     }
 }

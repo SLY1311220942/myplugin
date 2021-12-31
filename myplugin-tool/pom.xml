@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>myplugin-tool-pinyin</module>
+        <module>myplugin-tool-excel</module>
     </modules>
 
 

@@ -6,7 +6,7 @@ package com.sly.myplugin.base.result;
  * @author SLY
  * @date 2021/11/25
  */
-public interface ResultCode {
+public interface IResultCode {
     /**
      * 获取返回码
      *

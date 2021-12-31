@@ -51,11 +51,17 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.sly</groupId>
+                <artifactId>myplugin-tool-excel</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
             <!--第三方jar包-->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>1.2.78</version>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.7.18</version>
             </dependency>
             <dependency>
                 <groupId>net.duguying.pinyin</groupId>

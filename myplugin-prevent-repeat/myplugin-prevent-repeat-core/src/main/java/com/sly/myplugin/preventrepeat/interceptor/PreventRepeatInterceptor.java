@@ -1,7 +1,7 @@
 package com.sly.myplugin.preventrepeat.interceptor;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.sly.myplugin.base.result.BaseResultCode;
 import com.sly.myplugin.base.result.Result;
 import com.sly.myplugin.preventrepeat.annotation.PreventRepeat;
@@ -81,9 +81,9 @@ public class PreventRepeatInterceptor implements HandlerInterceptor {
                 if (values != null && values.length > 0) {
                     value = values[0];
                 }
-                jsonObject.put(name, value);
+                jsonObject.set(name, value);
             }
-            paramStr = jsonObject.toJSONString();
+            paramStr = jsonObject.toString();
         } else if (httpMethod.equals(METHOD_POST)) {
             Parameter[] parameters = method.getParameters();
             Object req = null;
@@ -98,7 +98,7 @@ public class PreventRepeatInterceptor implements HandlerInterceptor {
                     }
                 }
             }
-            paramStr = JSON.toJSONString(req);
+            paramStr = JSONUtil.toJsonStr(req);
         }
         //得到所有参数的md5串
         if (paramStr == null) {
@@ -114,7 +114,7 @@ public class PreventRepeatInterceptor implements HandlerInterceptor {
         if (result == null || !result) {
             //redis操作返回false，说明key还没有到期清除，此时提示用户操作过于频繁。
             response.setContentType("text/javascript;charset=utf-8");
-            response.getWriter().write(JSON.toJSONString(Result.failed(BaseResultCode.PREVENT_REPEAT)));
+            response.getWriter().write(JSONUtil.toJsonStr(Result.failed(BaseResultCode.PREVENT_REPEAT)));
             return false;
         }
         return true;
